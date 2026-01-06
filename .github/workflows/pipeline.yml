@@ -1,4 +1,4 @@
-name: "Deploy terraform-rds"
+name: "Deploy terraform-dynamodb"
 
 on:
   push:
@@ -22,8 +22,8 @@ jobs:
       environment: dev
       aws-region: "${{ vars.AWS_REGION }}"
       aws-statefile-s3-bucket: "${{ vars.BUCKET_S3_NAME }}"
-      aws-statefile-key: "rds/terraform.tfstate"
+      aws-statefile-key: "env:/dev/dynamo/pagamento/terraform.tfstate"
       aws-lock-dynamodb-table: "${{ vars.DYNAMODB_TABLE }}"
       destroy: ${{ github.event.inputs.destroy || 'false' }}
     secrets:
-      aws-assume-role-arn: ${{ secrets.AWS_ASSUME_ROLE_ARN_RDS }}
+      aws-assume-role-arn: ${{ secrets.AWS_ASSUME_ROLE_ARN_DYNAMODB }}
