@@ -5,10 +5,10 @@
 resource "aws_dynamodb_table" "pagamento" {
   name           = "Pagamento"
   billing_mode   = "PAY_PER_REQUEST"
-  hash_key       = "id"
+  hash_key       = "pedidoId"
 
 attribute {
-  name = "id"
+  name = "pedidoId"
   type = "S"
 }
   ttl {
